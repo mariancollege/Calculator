@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        .box {
+            margin-top: 100px;
+            width: 500px;
+            height: 400px;
+            background: white;
+        }
+
+        .scnd_box {
+
+            width: 350px;
+            height: 110px;
+            background: #f4f3f9;
+        }
+
+        .lb {
+            font-size: 20px;
+            color: white;
+        }
+
+        .tbd {
+            background: #49475e;
+            width: 500px;
+            height: 60px;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <div align="center">
+        <div align="center" class="box">
+            <div class="tbd">
+                <br>
+                <label class="lb">Calculator</label>
+
+            </div>
+            <br>
+            <br>
+            <table>
+                <tr class="tr">
+                    <td>
+                        <label>First Number</label>
+                    </td>
+                    <td>
+                        <input type="number" name="fstno" id="fstno" value="Enter first no" autofocus>
+                    </td>
+                </tr>
+                <tr class="tr">
+                    <td>
+                        <label>Second Number</label>
+                    </td>
+                    <td>
+                        <input type="number" name="scndno" id="scndno">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <button type="button" onclick="add()" class="btn">+</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="sub()" class="btn">-</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="mul()" class="btn">x</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="div()" class="btn">/</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="mod()" class="btn">%</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="clrr()" class="btn">Clear</button>
+                    </td>
+
+                </tr>
+            </table>
+            <br>
+            <div align="center" class="scnd_box">
+                <table>
+                    <br>
+                    <br>
+                    <tr>
+                        <td>
+                            <label>Answer :</label>
+                        </td>
+                        <td>
+                            <input readonly name="output" id="output">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function add() {
+            var v1 = document.getElementById('fstno').value;
+            var v2 = document.getElementById('scndno').value;
+            if (v1 == "")
+                v1 = 0;
+            if (v2 == "")
+                v2 = 0;
+            var result = parseInt(v1) + parseInt(v2)
+            if (!isNaN(result)) {
+                document.getElementById('output').value = result;
+            }
+        }
+
+        function sub() {
+            var v1 = document.getElementById('fstno').value;
+            var v2 = document.getElementById('scndno').value;
+            if (v1 == "")
+                v1 = 0;
+            if (v2 == "")
+                v2 = 0;
+            var result = parseInt(v1) - parseInt(v2)
+            if (!isNaN(result)) {
+                document.getElementById('output').value = result;
+            }
+        }
+
+        function mul() {
+            var v1 = document.getElementById('fstno').value;
+            var v2 = document.getElementById('scndno').value;
+            if (v1 == "")
+                v1 = 0;
+            if (v2 == "")
+                v2 = 0;
+            var result = parseInt(v1) * parseInt(v2)
+            if (!isNaN(result)) {
+                document.getElementById('output').value = result;
+            }
+        }
+
+        function div() {
+            var v1 = document.getElementById('fstno').value;
+            var v2 = document.getElementById('scndno').value;
+            if (v1 == "")
+                v1 = 0;
+            if (v2 == "")
+                v2 = 0;
+            var result = parseInt(v1) / parseInt(v2)
+            if (!isNaN(result)) {
+                document.getElementById('output').value = result;
+            }
+        }
+
+        function mod() {
+            var v1 = document.getElementById('fstno').value;
+            var v2 = document.getElementById('scndno').value;
+            if (v1 == "")
+                v1 = 0;
+            if (v2 == "")
+                v2 = 0;
+            var result = parseInt(v1) % parseInt(v2)
+            if (!isNaN(result)) {
+                document.getElementById('output').value = result;
+            }
+        }
+
+
+        function clrr() {
+            fstno.value = '';
+            scndno.value = '';
+            output.value = '';
+            document.getElementById('fstno').focus()
+        }
+
+    </script>
+</form>
+</body>
+</html>
